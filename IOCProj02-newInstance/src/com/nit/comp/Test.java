@@ -1,4 +1,4 @@
-package com.nit.commons;
+package com.nit.comp;
 
 public class Test {
 	int a=10;
