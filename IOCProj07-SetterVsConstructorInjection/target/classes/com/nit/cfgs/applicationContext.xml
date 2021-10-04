@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- cfg employee class as a spring bean for showing cons injection -->
+	<bean id="emp" class="com.nit.beans.Employee">
+		<constructor-arg name="eid" value="101" />
+		<constructor-arg name="name" value="Kartik" />
+		<constructor-arg name="desg" value="Devloper" />
+		<!-- -here we have not given value any of this 3 then cons injection fails 
+			..thats why in cons injection we have to pass one or more dummy values if 
+			we are not ready with actual value -->
+	</bean>
+
+	<!-- cfg student class as a spring bean(we can give values to our choise 
+		properties -->
+	<bean id="stud" class="com.nit.beans.Student">
+		<property name="sid" value="102" />
+		<property name="name" value="shubh" />
+		<property name="marks" value="288" />
+		<!-- -here we have not given value to age and addres but still there is 
+			no problm -->
+	</bean>
+
+	<!-- mixed of both -->
+	<bean id="faculty" class="com.nit.beans.Faculty">
+		<!-- madnatory cons -->
+		<constructor-arg value="103" />
+		<constructor-arg value="Saurabh" />
+		<constructor-arg value="21" />
+		<!-- setter option -->
+		<property name="clgName" value="SKC " />
+	</bean>
+
+</beans>

@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>nit</groupId>
-  <artifactId>IOCProj06-StratergyDp-Spring</artifactId>
+  <artifactId>IOCProj07-SetterVsConstructorInjection</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <name>IOCProj06-StratergyDp-Spring</name>
+  <name>IOCProj07-SetterVsConstructorInjection</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -25,13 +25,12 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+      <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-context</artifactId>
     <version>5.3.10</version>
 </dependency>
-    
   </dependencies>
 
   <build>
