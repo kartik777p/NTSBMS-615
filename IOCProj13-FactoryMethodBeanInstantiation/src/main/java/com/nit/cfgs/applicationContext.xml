@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+<!--  - - - - - -  - - - - - - - - - - - - - - - - - - - - - -Static Factory - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - -  -->
+<!--  Static 	Factory Method return its own class Object -->
+	<bean id="c1" class="java.lang.Class" factory-method="forName">   <!-- calls Class.forName(j.u.Date) -->
+			<constructor-arg value="java.util.Date"/>  <!-- this is not a cons Injection here we are passing Argument to Factory method -->
+	</bean>
+
+<!-- Static Factory Method returns its related class Object  --><!-- its return Gregorian(CC) class Object Which is the subclass of Calender(AC)  -->
+	 <bean id="cal" class="java.util.Calendar" factory-method="getInstance">   <!-- calls Calender.getInstane(); -->
+	 </bean>
+	 
+<!-- Static Factory Method returns unrelated class Object  --> 
+    <bean id="props" class="java.lang.System" factory-method="getProperties"> <!--calls system.getProperties  -) return Properties  as a return type which is unrelated to system  -->
+    </bean>
+    
+    <!--  - - - - - -  - - - - - - - - - - - - - - - - - - - - - -Instance Factory - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - -  -->
+    <!-- Factory method returns its own class Object  -->
+    <bean id="s1" class="java.lang.String">
+   			 <constructor-arg value="hello"/> <!-- here cons Injection like new String("hello");  -->
+    </bean>
+    <bean id="s2" factory-bean="s1" factory-method="concat">   <!--  here s2=s1.concat("123"); - -> hello123(String)-->
+    		<constructor-arg value="123"/> <!-- not a cons Injection here we are sending factory method args -->
+    </bean>
+    <!-- Factory method returns its Unrelated  class Object  -->
+    <bean id="sb" class="java.lang.StringBuffer">
+        <constructor-arg value="Hello! how are you"/> <!-- cons injection like new StringBuffer("Hello! how are you") -->
+    </bean>
+    <bean id="str" factory-bean="sb" factory-method="substring">
+    <constructor-arg value="0"/>  <!-- STARTING INDEX -->
+    <constructor-arg value="5"/>   <!-- ENDING INDEX   [5] INDEX IS NOT INCLUDED ITS 0-4 -->
+    </bean>
+</beans>
