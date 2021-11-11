@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!-- enable property Placeholer  -->
+<context:property-placeholder location="com/nit/commons/application.properties"/>
+
+
+
+<!--  cfg DataSource class   -->
+        <bean id="drds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName" value="${driver.className}"/>
+			<property name="url" value="${driver.url}"/>
+			<property name="username" value="${driver.user}"/>
+			<property name="password" value="${driver.password}"/>
+       </bean>
+       
+<!-- cfg dao class For Oracle -->
+	<bean id="empDaoOracle" class="com.nit.dao.EmployeeDaoForOracleImpl">
+				<constructor-arg name="ds" ref="drds"/>        
+	</bean>
+
+<!-- cfg dao class  for Mysql   -->
+	<bean id="empDaoMysql" class="com.nit.dao.EmployeeDaoForMysqlImpl">
+			<constructor-arg name="ds" ref="drds"/>
+	</bean>    
+
+<!-- cfg service class -->
+	<bean id="empService" class="com.nit.service.EmployeeServiceImpl">
+<!-- 	      <constructor-arg name="dao" ref="empDaoOracle"/>  -->
+ 	 <constructor-arg name="dao" ref="empDaoMysql"/>   <!-- for mysql -->
+	</bean>
+
+<!-- cfg controller class -->
+	<bean id="empController" class="com.nit.controller.EmployeeController">
+			<constructor-arg name="service" ref="empService"/>
+	</bean>
+</beans>

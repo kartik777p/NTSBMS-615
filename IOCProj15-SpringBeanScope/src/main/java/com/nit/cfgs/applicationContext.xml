@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- - - - - - - - - - - - - - - -FOR WISHMSGGENRATOR CLASS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- cfg dependent class -->
+	<bean id="dt" class="java.util.Date" />
+
+	<!-- cfg target class -->
+	<bean id="wmg" class="com.nit.beans.WishMassageGenrator" scope="singleton">
+		<property name="date" ref="dt"/>
+	</bean>
+	
+	<!-- - - - - - - - - - - - - - - -FOR PRINTER CLASS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<bean id="p1" class="com.nit.ston.Printer"/>  <!-- no scope=singleton -->
+	<bean id="p" class="com.nit.ston.Printer" scope="prototype"/>  <!-- prototype scope (every time new obj) -->
+
+</beans>

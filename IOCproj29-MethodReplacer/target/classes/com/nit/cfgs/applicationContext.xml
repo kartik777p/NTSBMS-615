@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- cfgs replacer class as spring bean -->
+	<bean id="calcReplacer" class="com.nit.replacer.CalcAmtReplacer" />
+
+	<!-- cfgs target class as sprng bean having replacr method -->
+	<bean id="calc" class="com.nit.beans.BankService"> 
+		<replaced-method name="calcIntrrestAmmount"
+			replacer="calcReplacer">
+			<arg-type>double</arg-type>
+			<arg-type>double</arg-type>
+			<arg-type>double</arg-type>
+		</replaced-method>
+	</bean>
+	<!-- if we cmmt replaced-method tag then orignal logic will execute and if we uncomment that logic then new logic will execute   -->
+</beans>
